@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abhishek Madar - Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="#home" class="logo">ABHISHEK MADAR</a>
+    <ul class="nav-links">
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="home">
+  <div class="hero-content">
+    <h1>Welcome to My Portfolio</h1>
+    <p>Computer Science Student | Developer | Tech Enthusiast</p>
+  </div>
+</header>
+
+<section id="about" class="container">
+  <h2>About Me</h2>
+  <p>
+    I am studying Computer Science at <strong>Dayananda Sagar College of Engineering, Bangalore</strong>, with experience in C, C++, Java, Python, and web development technologies. 
+    I am passionate about coding, problem-solving, and learning new technology stacks to build meaningful software.
+  </p>
+
+  <div class="profile-icons">
+    <a href="https://www.linkedin.com/in/abhishek-madar" target="_blank" rel="noopener">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn Logo">
+    </a>
+    <a href="https://github.com/abhishek-madar" target="_blank" rel="noopener">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub Logo">
+    </a>
+  </div>
+</section>
+
+<section id="projects" class="container">
+  <h2>Projects</h2>
+  <div class="project-grid">
+
+    <div class="project-card">
+      <img src="https://www.bitsathy.ac.in/wp-content/uploads/KUMARESAN-K-1.jpg" alt="Soil Detection Project" />
+      <h3>Soil Detection using Machine Learning</h3>
+      <p>A project focused on classifying soil types using machine learning algorithms and IoT sensors.
+        <br />Technologies Used:
+        <br />1. Python 
+        <br />2. Machine Learning 
+        <br />3. IoT
+        <br />4. HTML, CSS, JS
+      </p>
+    </div>
+
+    <div class="project-card">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPj-30-HPDSn57eYi8hVEjl19rKdF9rZQTk2sZxv7we2Gnnv9wYKi4OtauDKRm5R6sCDlSa5K6hsa1CbffNZSG_WaC_CI94sG2a4nWKGV_3C8wPyZEEKFZMnSBLkYqFD-Iwvp39AY508fIiPB42B34x0IO0qFLkyeJVsIfy5VW_vJiR-X1vGQbsowcbw/s1280/Top%2010%20Profile%20Card%20Template%20Designs%20in%20HTML%20&%20CSS.jpg" alt="Profile Card Project" />
+      <h3>Student Profile Card</h3>
+      <p>A responsive student profile card design showcasing personal and academic information.
+        <br />Technologies Used:
+        <br />1. HTML 
+        <br />2. CSS 
+        <br />3. JavaScript
+      </p>
+    </div>
+
+    <div class="project-card">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMbi5wW1OCqY_HUizn9XLufl0f2vhISW7GMJAGld7boxJT1QgN7Rat4DPaHLwPoHIwbVuIIADi-9imIUNRLwDi_XjQJEHkDc-C3VV-h7D7hwiAZw-HOuPOYZzEtJlXt2wBjQGZtBCOGzemN1RsyF723Oq5MuwBJrXW4dOauK1WTuhoGoxGeZfPWBJ49Ak/s1280/jAVASCRIPT%20(4).png" alt="Weather Forecast Web App" />
+      <h3>Weather Forecast Web App</h3>
+      <p>A web application providing weather forecasts using the OpenWeather API.
+        <br />Technologies Used:
+        <br />1. HTML 
+        <br />2. CSS 
+        <br />3. JavaScript 
+        <br />4. OpenWeather API
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact" class="container">
+  <h2>Contact Me</h2>
+  <form id="contactForm" action="#" method="POST">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="Name" placeholder="Your full name" required />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="Email" placeholder="Your email address" required />
+
+    <label for="message">Message</label>
+    <textarea id="message" name="Message" rows="5" placeholder="Your message here..." required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  <p>Thank you for visiting my portfolio.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  const sections = document.querySelectorAll('section, header');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120;
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').includes(current)) {
+        link.classList.add('active');
+      }
+    });
+  });
+
+  const contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    alert('Thank you, ' + name + '! Your message has been received.');
+    contactForm.reset();
+  });
+</script>
+
+</body>
+</html>
